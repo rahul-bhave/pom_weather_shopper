@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="0" failures="0" hostname="LAPTOP-S0A7MKF0" name="pytest" skipped="0" tests="1" time="58.022" timestamp="2019-10-25T20:41:02.110677"><testcase classname="tests.test_example_form" file="tests\test_example_form.py" line="14" name="test_example_form[chrome]" time="57.893"></testcase></testsuite></testsuites>
