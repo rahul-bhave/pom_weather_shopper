@@ -12,49 +12,60 @@
 #XPATH
 ###########################################
 
-#Locators for the footer object(footer_object.py)
+#Main page
+temp_field = "xpath,//span[@id ='temperature']"
+click_moisturizers = "xpath,//button[text()='Buy moisturizers']"
+click_sunscreens= "xpath,//button[text()='Buy sunscreens']"
 
-footer_menu = "xpath,//ul[contains(@class,'nav-justified')]/descendant::a[text()='%s']"
-copyright_text = "xpath,//p[contains(@class,'qxf2_copyright')]"
-#----
+#Moisturizer header
+heading_moisturizer = "xpath,//h2[contains(text(),'Moisturizers')]"
 
-#Locators for the form object(form_object.py)
-name_field = "id,name"       
-email_field = "name,email"
-phone_no_field = "css selector,#phone"
-click_me_button = "xpath,//button[text()='Click me!']"
-gender_dropdown = "xpath,//button[@data-toggle='dropdown']"
-gender_option = "xpath,//a[text()='%s']"
-tac_checkbox = "xpath,//input[@type='checkbox']"
-#----
+#Sunscreen header
+heading_sunscreen = "xpath,//h2[contains(text(),'Sunscreens')]"
 
-#Locators for hamburger menu object(hamburg_menu_object.py)
-menu_icon = "xpath,//img[@alt='Menu']"
-menu_link = "xpath,//ul[contains(@class,'dropdown-menu')]/descendant::a[text()='%s']"
-menu_item = "xpath,//ul[contains(@class,'dropdown-menu')]/descendant::a[@data-toggle='dropdown' and text()='%s']"
-#----
+page_title = "xpath,//h2"
 
-#Locators for header object(header_object.py)
-qxf2_logo = "xpath,//img[contains(@src,'qxf2_logo.png')]"
-qxf2_tagline_part1 = "xpath,//h1[contains(@class,'banner-brown') and text()='SOFTWARE TESTING SERVICES']"
-qxf2_tagline_part2 = "xpath,//h1[contains(@class,'banner-grey') and text()='for startups']"
-#----
+#moisturizers = "xpath,//div[contains(@class,'text-center col-4')]"
+#sunscreens = "xpath,//div[contains(@class,'text-center col-4')]"
 
-#Locators for table object(table_object.py)
-table_xpath = "xpath,//table[@name='Example Table']"
-rows_xpath = "xpath,//table[@name='Example Table']//tbody/descendant::tr"
-cols_xpath = "xpath,//table[@name='Example Table']//tbody/descendant::td"
-cols_relative_xpath = "xpath,//table[@name='Example Table']//tbody/descendant::tr[%d]/descendant::td"
-cols_header = "xpath,//table[@name='Example Table']//thead/descendant::th"
-#----
+# get product names
+moisturizers_names = "xpath,//p[contains(@class,'font-weight-bold top-space-10')]"
+sunscreens_names ="xpath,//p[contains(@class,'font-weight-bold top-space-10')]"
 
-#Locators for tutorial redirect page(tutorial_redirect_page.py)
-heading = "xpath,//h2[contains(@class,'grey_text') and text()='Selenium for beginners: Practice page 2']"
+#get product price
+moisturizers_price = "xpath,//p[contains(text(),'Price')]"
+sunscreens_price = "xpath,//p[contains(text(),'Price')]"
 
-#Locators for Contact Object(contact_object.py)
-contact_name_field = "id,name"
+product_price_element = "xpath,//p[contains(text(), '%s')]/following-sibling::p"
+product_add_element ="xpath,//p[contains(text(), '%s')]/following-sibling::p[contains(text(),'%s')]/following-sibling::button"
 
-#Locators for mobile application - Bitcoin Info(bitcoin_price_page.py)
-bitcoin_real_time_price_button = "xpath,//android.widget.TextView[@resource-id='com.dudam.rohan.bitcoininfo:id/current_price']"
-bitcoin_price_page_heading = "xpath,//android.widget.TextView[@text='Real Time Price of Bitcoin']"
-bitcoin_price_in_usd = "xpath,//android.widget.TextView[@resource-id='com.dudam.rohan.bitcoininfo:id/doller_value']"
+
+# click cart button
+click_cart = "xpath,//button[contains(@class,'nav-link')]"
+checkout_heading = "xpath,//h2"
+
+# Click pay with card button
+pay_with_card = "xpath,//button['Pay with Card']"
+
+# get stripe iframe name
+iframe_name = "//iframe[@name='stripe_checkout_app']"
+
+#Stripe Payment gateway
+email = "xpath,//input[@type='email']"       
+
+card_number  =  "xpath,//input[@type='tel']"
+
+card_expiry = "xpath,//input[@placeholder='MM / YY']"
+
+cvc = "xpath,//input[@placeholder='CVC']"
+
+zip_code = "xpath, //input[@placeholder='ZIP Code']"
+
+pay_button = "xpath, //button[@type ='submit']"
+
+
+
+
+
+
+

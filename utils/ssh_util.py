@@ -78,8 +78,9 @@ class Ssh_Util:
                 for command in commands:
                     print("Executing command --> {}".format(command))
                     stdin, stdout, stderr = self.client.exec_command(command,timeout=10)
-                    self.ssh_output = stdout.read()
+                    self.ssh_output = stdout.read().decode()
                     self.ssh_error = stderr.read()
+                    print (stdout.readlines.decode('ISO-8859-1'))
                     if self.ssh_error:
                         print("Problem occurred while running command:"+ command + " The error is " + self.ssh_error)
                         result_flag = False

@@ -3,13 +3,12 @@ Class to wrap around parsing command line options
 """
 import os, sys
 import optparse
-from conf import base_url_conf as conf
 
 
 class Option_Parser:
     "The option parser class"
     
-    def __init__(self,usage="\n----\n%prog -b <OPTIONAL: Browser> -c <OPTIONAL: configuration_file> -u <OPTIONAL: APP URL> -a <OPTIONAL: API URL> -r <Test Run Id> -t <OPTIONAL: testrail_configuration_file> -s <OPTIONAL: sauce flag>\n----\nE.g.: %prog -b FF -c .conf -u http://qxf2.com -r 2 -t testrail.conf -s Y\n---"
+    def __init__(self,usage="\n----\n%prog -b <OPTIONAL: Browser> -c <OPTIONAL: configuration_file> -u <OPTIONAL: APP URL> -a <OPTIONAL: API URL> -r <Test Run Id> -t <OPTIONAL: testrail_configuration_file> -s <OPTIONAL: sauce flag>\n----\nE.g.: %prog -b FF -c .conf -u http://weathershopper.pythonanywhere.com -r 2 -t testrail.conf -s Y\n---"
 ):
         "Class initializer"
         self.usage=usage
@@ -24,11 +23,11 @@ class Option_Parser:
                             help="Browser. Valid options are firefox, ie and chrome")                      
         self.parser.add_option("-U","--app_url",
                             dest="url",
-                            default=conf.base_url,
+                            default="http://weathershopper.pythonanywhere.com/",
                             help="The url of the application")
         self.parser.add_option("-A","--api_url",
                             dest="api_url",
-                            default="http://35.167.62.251/",
+                            default="http://127.0.0.1:5000",
                             help="The url of the api")
         self.parser.add_option("-X","--testrail_flag",
                             dest="testrail_flag",

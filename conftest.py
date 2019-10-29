@@ -3,161 +3,151 @@ from conf import browser_os_name_conf
 from utils import post_test_reports_to_slack
 from utils.email_pytest_report import Email_Pytest_Report
 from utils import Tesults
-from conf import base_url_conf as conf
-import time
+
 
 @pytest.fixture
-def browser(request):
+def browser():
     "pytest fixture for browser"
-    return request.config.getoption("-B")
+    return pytest.config.getoption("-B")
 
 
 @pytest.fixture
-def base_url(request):
+def base_url():
     "pytest fixture for base url"
-    return request.config.getoption("-U")
+    return pytest.config.getoption("-U")
 
 
 @pytest.fixture
-def api_url(request):
+def api_url():
     "pytest fixture for base url"
-    return request.config.getoption("-A")
+    return pytest.config.getoption("-A")
     
 
 @pytest.fixture
-def test_run_id(request):
+def test_run_id():
     "pytest fixture for test run id"
-    return request.config.getoption("-R")
+    return pytest.config.getoption("-R")
 
 
 @pytest.fixture
-def testrail_flag(request):
+def testrail_flag():
     "pytest fixture for test rail flag"
-    return request.config.getoption("-X")
+    return pytest.config.getoption("-X")
 
 
 @pytest.fixture
-def remote_flag(request):
+def remote_flag():
     "pytest fixture for browserstack/sauce flag"
-    return request.config.getoption("-M")
+    return pytest.config.getoption("-M")
 
 
 @pytest.fixture
-def browser_version(request):
+def browser_version():
     "pytest fixture for browser version"
-    return request.config.getoption("-V") 
+    return pytest.config.getoption("-V") 
 
 
 @pytest.fixture
-def os_name(request):
+def os_name():
     "pytest fixture for os_name"
-    return request.config.getoption("-P") 
+    return pytest.config.getoption("-P") 
 
 
 @pytest.fixture
-def os_version(request):
+def os_version():
     "pytest fixture for os version"
-    return request.config.getoption("-O")
+    return pytest.config.getoption("-O")
 
 
 @pytest.fixture
-def remote_project_name(request):
+def remote_project_name():
     "pytest fixture for browserStack project name"
-    return request.config.getoption("--remote_project_name")
+    return pytest.config.getoption("--remote_project_name")
 
 
 @pytest.fixture
-def remote_build_name(request):
+def remote_build_name():
     "pytest fixture for browserStack build name"
-    return request.config.getoption("--remote_build_name")
+    return pytest.config.getoption("--remote_build_name")
 
 
 @pytest.fixture
-def slack_flag(request):
+def slack_flag():
     "pytest fixture for sending reports on slack"
-    return request.config.getoption("-S")
+    return pytest.config.getoption("-S")
 
 
 @pytest.fixture
-def tesults_flag(request):
+def tesults_flag():
     "pytest fixture for sending results to tesults"
-    return request.config.getoption("--tesults")
+    return pytest.config.getoption("--tesults")
 
 
 @pytest.fixture
-def mobile_os_name(request):
+def mobile_os_name():
     "pytest fixture for mobile os name"
-    return request.config.getoption("-G")
+    return pytest.config.getoption("-G")
 
 
 @pytest.fixture
-def mobile_os_version(request):
+def mobile_os_version():
     "pytest fixture for mobile os version"
-    return request.config.getoption("-H")
+    return pytest.config.getoption("-H")
 
 
 @pytest.fixture
-def device_name(request):
+def device_name():
     "pytest fixture for device name"
-    return request.config.getoption("-I")
+    return pytest.config.getoption("-I")
 
 
 @pytest.fixture
-def app_package(request):
+def app_package():
     "pytest fixture for app package"
-    return request.config.getoption("-J")
+    return pytest.config.getoption("-J")
 
 
 @pytest.fixture
-def app_activity(request):
+def app_activity():
     "pytest fixture for app activity"
-    return request.config.getoption("-K")
+    return pytest.config.getoption("-K")
 
 
 @pytest.fixture
-def device_flag(request):
+def device_flag():
     "pytest fixture for device flag"
-    return request.config.getoption("-Q")
+    return pytest.config.getoption("-Q")
 
 
 @pytest.fixture
-def email_pytest_report(request):
+def email_pytest_report():
     "pytest fixture for device flag"
-    return request.config.getoption("--email_pytest_report")
+    return pytest.config.getoption("--email_pytest_report")
 
 
 @pytest.fixture
-def app_name(request):
+def app_name():
     "pytest fixture for app name"
-    return request.config.getoption("-D")
+    return pytest.config.getoption("-D")
 
 
 @pytest.fixture
-def app_path(request):
+def app_path():
     "pytest fixture for app path"
-    return request.config.getoption("-N")  
+    return pytest.config.getoption("-N")    
 
-@pytest.fixture
-def app_path(request):
-    "pytest fixture for app path"
-    return request.config.getoption("-E")
-
-@pytest.fixture()
-def user_account(worker_id):
-    """ use a different account in each xdist worker """
-    return "account_%s" % worker_id
 
 def pytest_terminal_summary(terminalreporter, exitstatus):
     "add additional section in terminal summary reporting."
-    if  terminalreporter.config.getoption("-S").lower() == 'y':
+    if pytest.config.getoption("-S").lower() == 'y':
         post_test_reports_to_slack.post_reports_to_slack()
-    elif terminalreporter.config.getoption("--email_pytest_report").lower() == 'y':
+    elif pytest.config.getoption("--email_pytest_report").lower() == 'y':
         #Initialize the Email_Pytest_Report object
         email_obj = Email_Pytest_Report()
         # Send html formatted email body message with pytest report as an attachment
         email_obj.send_test_report_email(html_body_flag=True,attachment_flag=True,report_file_path= 'default')
 
-    if  terminalreporter.config.getoption("--tesults").lower() == 'y':
+    if pytest.config.getoption("--tesults").lower() == 'y':
         Tesults.post_results_to_tesults()
         
 def pytest_generate_tests(metafunc):
@@ -193,12 +183,8 @@ def pytest_addoption(parser):
                       help="Browser. Valid options are firefox, ie and chrome")                      
     parser.addoption("-U","--app_url",
                       dest="url",
-                      default=conf.base_url,
+                      default="http://weathershopper.pythonanywhere.com/",
                       help="The url of the application")
-    parser.addoption("-A","--api_url",
-                      dest="url",
-                      default="http://35.167.62.251",
-                      help="The url of the api")
     parser.addoption("-X","--testrail_flag",
                       dest="testrail_flag",
                       default='N',
@@ -277,22 +263,6 @@ def pytest_addoption(parser):
     parser.addoption("-N","--app_path",
                       dest="app_path",
                       help="Enter app path")
-    parser.addoption("-E", action="store", 
-                      metavar="NAME",
-                      help="only run tests matching the environment NAME.")
-
-def pytest_configure(config):
-    # register an additional marker
-    config.addinivalue_line("markers",
-        "env(name): mark test to run only on named environment")
-
-def pytest_runtest_setup(item):
-    # envmarker = item.get_marker("env")
-    envmarker = item.get_closest_marker("env")
-    if envmarker is not None:
-        envname = envmarker.args[0]
-        if envname != item.config.getoption("-E"):
-            pytest.skip("test requires env %r" % envname)
 
 
 

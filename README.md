@@ -1,2 +1,2 @@
-# pom_weather_shopper
-pom_weather_shopper
+# learn-python-through-selenium
+Learn Python as you solve Selenium exercises
