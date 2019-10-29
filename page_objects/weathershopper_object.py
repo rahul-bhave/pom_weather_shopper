@@ -12,21 +12,27 @@ class Weathershopper_Object:
     "Page object for the Form"
     
     #locators
+    temp_field=locators.temp_field
      
 
     @Wrapit._screenshot
     @Wrapit._exceptionHandler
     def get_temprature(self):
+        # get temperature
+        result_flag= self.get_element(self.temp_field).text
+        return result_flag
         
-
-        return result_flag 
 
 
     @Wrapit._screenshot
     @Wrapit._exceptionHandler
     def check_temprature(self):
+        "check the temperature"
         
+           
         return result_flag
+
+        
 
 
     @Wrapit._screenshot

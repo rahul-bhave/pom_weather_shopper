@@ -23,6 +23,10 @@ def test_weather_shopper_form(base_url,browser,browser_version,os_version,os_nam
         start_time = int(time.time())	#Set start_time with current time
         test_obj.register_driver(remote_flag,os_name,os_version,browser,browser_version,remote_project_name,remote_build_name)
 
+        #3. Read the temparature
+        result_flag=test_obj.get_temprature()
+        print("Temp is %s"%result_flag)
+
         #Teardown
         test_obj.wait(3)
         expected_pass = test_obj.result_counter
