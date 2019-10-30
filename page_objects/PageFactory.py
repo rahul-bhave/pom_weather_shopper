@@ -11,6 +11,9 @@ Pages implemented so far:
 """
 
 from page_objects.weathershopper_main_page import Weathershopper_Main_Page
+from page_objects.sunscreen_redirect_page  import Sunscreen_Redirect_Page
+from page_objects.moisturizer_redirect_page import Moisturizer_Redirect_Page
+from page_objects.cart_redirect_page import Cart_Redirect_Page
 
 
 
@@ -22,14 +25,12 @@ class PageFactory():
         page_name = page_name.lower()
         if page_name == "main page":
             test_obj = Weathershopper_Main_Page(base_url=base_url,trailing_slash_flag=trailing_slash_flag)
-        elif page_name == "redirect":
-            test_obj = Tutorial_Redirect_Page(base_url=base_url,trailing_slash_flag=trailing_slash_flag)
-        elif page_name == "contact page":
-            test_obj = Contact_Page(base_url=base_url,trailing_slash_flag=trailing_slash_flag)
-        elif page_name == "bitcoin main page":
-            test_obj = Bitcoin_Main_Page()    
-        elif page_name == "bitcoin price page":
-            test_obj = Bitcoin_Price_Page()
+        elif page_name == "moisturizers":
+            test_obj = Moisturizer_Redirect_Page(base_url=base_url,trailing_slash_flag=trailing_slash_flag)
+        elif page_name == "sunscreens":
+            test_obj = Sunscreen_Redirect_Page(base_url=base_url,trailing_slash_flag=trailing_slash_flag)  
+        elif page_name == "cart":
+            test_obj = Cart_Redirect_Page(base_url=base_url,trailing_slash_flag=trailing_slash_flag)
         return test_obj
 
     get_page_object = staticmethod(get_page_object)
