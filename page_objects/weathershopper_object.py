@@ -13,6 +13,8 @@ class Weathershopper_Object:
     
     #locators
     temp_field=locators.temp_field
+    buy_moisturizers = locators.click_moisturizers
+    buy_sunscreens = locators.click_sunscreens
      
 
     @Wrapit._screenshot
@@ -21,25 +23,19 @@ class Weathershopper_Object:
         # get temperature
         result_flag= self.get_element(self.temp_field).text
         result_flag=result_flag[:-2]
-        
+
         return result_flag
         
-
-
-    @Wrapit._screenshot
-    @Wrapit._exceptionHandler
-    def check_temprature(self):
-        "check the temperature"
-        
-           
-        return result_flag
-
-        
-
 
     @Wrapit._screenshot
     @Wrapit._exceptionHandler
     def click_sunscreens(self):
+        "click the Buy sunscreens button"
+        result_flag = self.click_element(self.buy_sunscreens)
+        self.conditional_write(result_flag,
+            positive='Clicked on the "Buy sunscreens" button',
+            negative='Failed to click on "Buy sunscreens" button',
+            level='debug')
         
         return result_flag
 
@@ -48,7 +44,12 @@ class Weathershopper_Object:
     @Wrapit._screenshot
     @Wrapit._exceptionHandler
     def click_moisturizers(self):
-        
+        "click the Buy moisturizers button"      
+        result_flag = self.click_element(self.buy_moisturizers)
+        self.conditional_write(result_flag,
+            positive='Clicked on the "Buy moisturizers" button',
+            negative='Failed to click on "Buy moisturizers" button',
+            level='debug')
             
         return result_flag
 

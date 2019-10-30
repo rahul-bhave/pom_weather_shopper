@@ -27,6 +27,14 @@ def test_weather_shopper_form(base_url,browser,browser_version,os_version,os_nam
         result_flag=test_obj.get_temprature()
         print("Temp is %s"%result_flag)
 
+        #4. Select appropriate item
+        if int(result_flag) <= 19:
+           print("Temperature is %s"%result_flag)
+           print("We will buy moisturiser")
+        elif int(result_flag) >=34:
+           print("Temperature is %s"%result_flag)
+           print("We will buy sunscreens")
+
         #Teardown
         test_obj.wait(3)
         expected_pass = test_obj.result_counter
