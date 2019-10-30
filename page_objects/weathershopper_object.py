@@ -15,6 +15,10 @@ class Weathershopper_Object:
     temp_field=locators.temp_field
     buy_moisturizers = locators.click_moisturizers
     buy_sunscreens = locators.click_sunscreens
+    redirect_title_moisturizers= 'moisturizers'
+    redirect_title_sunscreens='sunscreens'
+    heading_moisturizer = "xpath,//h2[contains(text(),'Moisturizers')]"
+    heading_sunscreen = "xpath,//h2[contains(text(),'Sunscreens')]"
      
 
     @Wrapit._screenshot
@@ -57,13 +61,21 @@ class Weathershopper_Object:
     @Wrapit._screenshot
     @Wrapit._exceptionHandler
     def check_redirect_moisturizers(self):
-        
-        
-        return result_flag
+        result_flag = False
+        heading_moisturizer = "xpath,//h2[contains(text(),'Moisturizers')]"
+        if self.check_element_present(heading_moisturizer) is not None:
+           result_flag = True
+           self.switch_page("moisturizers")
+        return result_flag   
     
     @Wrapit._screenshot
     @Wrapit._exceptionHandler
     def check_redirect_sunscreens(self):
+        result_flag = False       
+        heading_sunscreen = "xpath,//h2[contains(text(),'Sunscreens')]"
+        if self.check_element_present(heading_sunscreen) is not None:
+            result_flag = True
+            self.switch_page("sunscreens")
         
         
         return result_flag

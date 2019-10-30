@@ -27,15 +27,24 @@ def test_weather_shopper_form(base_url,browser,browser_version,os_version,os_nam
         result_flag=test_obj.get_temprature()
         print("Temp is %s"%result_flag)
 
-        #4. Select appropriate item
+        #4. Select appropriate item and check the screen
         if int(result_flag) <= 19:
            print("Temperature is %s"%result_flag)
            print("We will buy moisturiser")
            test_obj.click_moisturizers()
+           is_screen_visible=test_obj.check_redirect_moisturizers()
+           #print(is_screen_visible)
+           if is_screen_visible is not None:
+               print("You are on Buy Moisturizer page")
+
         elif int(result_flag) >=34:
            print("Temperature is %s"%result_flag)
            print("We will buy sunscreens")
            test_obj.click_sunscreens()
+           is_screen_visible=test_obj.check_redirect_sunscreens()
+           #print(is_screen_visible)
+           if is_screen_visible is not None:
+               print("You are on Buy Sunscreens page")
 
         #Teardown
         test_obj.wait(3)
