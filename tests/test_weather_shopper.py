@@ -3,6 +3,7 @@ import os,sys,time
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from page_objects.PageFactory import PageFactory
 from utils.Option_Parser import Option_Parser
+import conf.product_payment_conf as conf
 
 
 
@@ -36,15 +37,35 @@ def test_weather_shopper_form(base_url,browser,browser_version,os_version,os_nam
            #print(is_screen_visible)
            if is_screen_visible is not None:
                print("You are on Buy Moisturizer page")
+           
+           # Select product categories
+           product_moisturizers_category = conf.product_moisturizers_category
+           print(product_moisturizers_category)
+           # Adding the product categories in the cart
+
 
         elif int(result_flag) >=34:
            print("Temperature is %s"%result_flag)
            print("We will buy sunscreens")
            test_obj.click_sunscreens()
            is_screen_visible=test_obj.check_redirect_sunscreens()
+
            #print(is_screen_visible)
            if is_screen_visible is not None:
                print("You are on Buy Sunscreens page")
+
+           # Select product categories
+           product_sunscreens_category = conf.product_sunscreens_category
+           print(product_sunscreens_category)
+           # Adding the product categories in the cart
+        
+       
+        
+
+        
+
+
+
 
         #Teardown
         test_obj.wait(3)
