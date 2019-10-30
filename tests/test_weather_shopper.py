@@ -41,6 +41,7 @@ def test_weather_shopper_form(base_url,browser,browser_version,os_version,os_nam
            # Select product categories
            product_moisturizers_category = conf.product_moisturizers_category
            print(product_moisturizers_category)
+           
            # Adding the product categories in the cart
 
 
