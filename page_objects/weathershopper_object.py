@@ -20,6 +20,8 @@ class Weathershopper_Object:
     def get_temprature(self):
         # get temperature
         result_flag= self.get_element(self.temp_field).text
+        result_flag=result_flag[:-2]
+        
         return result_flag
         
 
