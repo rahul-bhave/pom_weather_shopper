@@ -18,7 +18,29 @@ class Product_Object:
     
 
     def add_products(self,product_category):
-        "Add products to the cart"       
+        "Add products to the cart"
+        result_flag = False
+                  
+        for num in range(1,2):
+
+            for product in product_category:
+                price_product = 100000          
+                product_elements = self.get_elements(self.product_price_element%product) 
+                print(product_elements)
+
+                for element in product_elements:                           
+                    product_price = element.text                                   
+                    product_price = re.findall(r'\b\d+\b', product_price)
+                    print(product_price)
+
+                    if int(product_price[0]) < price_product:                   
+                        price_product = int(product_price[0])
+                        print(price_product)
+
+                        self.click_element(self.product_add_element%(product,price_product))
+
+                    num =+ num
+                print(num)      
         
         return result_flag
 
