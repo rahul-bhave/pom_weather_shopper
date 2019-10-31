@@ -84,10 +84,6 @@ def test_weather_shopper_form(base_url,browser,browser_version,os_version,os_nam
               test_obj.write("You are on cart page")
 
 
-        
-       
-    
-
         #Teardown
         test_obj.wait(3)
         expected_pass = test_obj.result_counter

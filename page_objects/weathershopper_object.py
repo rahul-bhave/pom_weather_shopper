@@ -15,8 +15,9 @@ class Weathershopper_Object:
     temp_field=locators.temp_field
     buy_moisturizers = locators.click_moisturizers
     buy_sunscreens = locators.click_sunscreens
-    
-     
+
+    result_flag = False
+ 
 
     @Wrapit._screenshot
     @Wrapit._exceptionHandler

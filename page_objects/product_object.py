@@ -60,7 +60,18 @@ class Product_Object:
 
         return result_flag     
 
+    @Wrapit._screenshot
+    @Wrapit._exceptionHandler
     def check_redirect_cart(self):
-        "Check if we have been redirected to the redirect page"
+        result_flag = False       
+        heading_cart = "xpath,//h2[contains(text(),'Checkout')]"
+        if self.check_element_present(heading_cart) is not None:
+            result_flag = True
+            self.conditional_write(result_flag,
+               positive='You are on cart page',
+               negative='Failed to go on cart page',
+               level='debug')
+            self.switch_page("cart")
 
-        return result_flag 
+        return result_flag
+
