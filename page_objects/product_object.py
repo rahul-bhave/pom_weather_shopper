@@ -2,6 +2,7 @@
 from .Base_Page import Base_Page
 import conf.locators_conf as locators
 from utils.Wrapit import Wrapit
+import re
 
 
 
@@ -26,21 +27,25 @@ class Product_Object:
             for product in product_category:
                 price_product = 100000          
                 product_elements = self.get_elements(self.product_price_element%product) 
-                print(product_elements)
+                #print(product_elements)
 
                 for element in product_elements:                           
                     product_price = element.text                                   
                     product_price = re.findall(r'\b\d+\b', product_price)
-                    print(product_price)
+                    #print(product_price)
 
                     if int(product_price[0]) < price_product:                   
                         price_product = int(product_price[0])
-                        print(price_product)
+                        #print(price_product)
 
-                        self.click_element(self.product_add_element%(product,price_product))
+                        result_flag= self.click_element(self.product_add_element%(product,price_product))
+                        self.conditional_write(result_flag,
+                                positive='Successfully added products',
+                                negative='Failed to add products',
+                                level='debug')
 
                     num =+ num
-                print(num)      
+                # print(num)      
         
         return result_flag
 

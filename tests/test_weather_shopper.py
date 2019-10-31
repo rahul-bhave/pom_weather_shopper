@@ -4,6 +4,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from page_objects.PageFactory import PageFactory
 from utils.Option_Parser import Option_Parser
 import conf.product_payment_conf as conf
+from page_objects.product_object import Product_Object
 
 
 
@@ -44,6 +45,8 @@ def test_weather_shopper_form(base_url,browser,browser_version,os_version,os_nam
            test_obj.write("product categories are %s"%product_moisturizers_category)
 
            # Adding the product categories in the cart
+           test_obj.add_products(product_moisturizers_category)
+
 
 
         elif int(result_flag) >=34:
@@ -60,14 +63,10 @@ def test_weather_shopper_form(base_url,browser,browser_version,os_version,os_nam
            product_sunscreens_category = conf.product_sunscreens_category
            test_obj.write("product categories are %s"%product_sunscreens_category)
            # Adding the product categories in the cart
+           test_obj.add_products(product_sunscreens_category)
         
        
-        
-
-        
-
-
-
+    
 
         #Teardown
         test_obj.wait(3)
