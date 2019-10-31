@@ -26,38 +26,39 @@ def test_weather_shopper_form(base_url,browser,browser_version,os_version,os_nam
 
         #3. Read the temparature
         result_flag=test_obj.get_temprature()
-        print("Temp is %s"%result_flag)
+        test_obj.write("Temperature is %s"%result_flag)
+        # print("Temperature is %s"%result_flag)
 
         #4. Select appropriate item and check the screen
         if int(result_flag) <= 19:
-           print("Temperature is %s"%result_flag)
-           print("We will buy moisturiser")
+           # print("Temperature is %s"%result_flag)
+           #print("We will buy moisturiser")
            test_obj.click_moisturizers()
            is_screen_visible=test_obj.check_redirect_moisturizers()
            #print(is_screen_visible)
            if is_screen_visible is not None:
-               print("You are on Buy Moisturizer page")
+               test_obj.write("You are on Buy Moisturizer page")
            
            # Select product categories
            product_moisturizers_category = conf.product_moisturizers_category
-           print(product_moisturizers_category)
-           
+           test_obj.write("product categories are %s"%product_moisturizers_category)
+
            # Adding the product categories in the cart
 
 
         elif int(result_flag) >=34:
-           print("Temperature is %s"%result_flag)
-           print("We will buy sunscreens")
+           #print("Temperature is %s"%result_flag)
+           #print("We will buy sunscreens")
            test_obj.click_sunscreens()
            is_screen_visible=test_obj.check_redirect_sunscreens()
 
            #print(is_screen_visible)
            if is_screen_visible is not None:
-               print("You are on Buy Sunscreens page")
+               test_obj.write("You are on Buy Sunscreens page")
 
            # Select product categories
            product_sunscreens_category = conf.product_sunscreens_category
-           print(product_sunscreens_category)
+           test_obj.write("product categories are %s"%product_sunscreens_category)
            # Adding the product categories in the cart
         
        
