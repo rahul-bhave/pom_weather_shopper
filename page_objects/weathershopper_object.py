@@ -15,10 +15,7 @@ class Weathershopper_Object:
     temp_field=locators.temp_field
     buy_moisturizers = locators.click_moisturizers
     buy_sunscreens = locators.click_sunscreens
-    redirect_title_moisturizers= 'moisturizers'
-    redirect_title_sunscreens='sunscreens'
-    heading_moisturizer = "xpath,//h2[contains(text(),'Moisturizers')]"
-    heading_sunscreen = "xpath,//h2[contains(text(),'Sunscreens')]"
+    
      
 
     @Wrapit._screenshot
@@ -87,6 +84,22 @@ class Weathershopper_Object:
         
         
         return result_flag
+
+    @Wrapit._screenshot
+    @Wrapit._exceptionHandler
+    def check_redirect_cart(self):
+        result_flag = False       
+        heading_cart = "xpath,//h2[contains(text(),'Checkout')]"
+        if self.check_element_present(heading_cart) is not None:
+            result_flag = True
+            self.conditional_write(result_flag,
+               positive='You are on cart page',
+               negative='Failed to go on cart page',
+               level='debug')
+            self.switch_page("cart")
+
+        return result_flag
+
 
 
     

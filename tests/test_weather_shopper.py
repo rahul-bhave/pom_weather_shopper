@@ -50,6 +50,12 @@ def test_weather_shopper_form(base_url,browser,browser_version,os_version,os_nam
            # view the added products on the cart
            test_obj.click_cart()
 
+           # verify you are at cart screen
+           is_screen_visible=test_obj.check_redirect_cart()
+           if is_screen_visible is not None:
+              test_obj.write("You are on cart page")
+
+
 
 
         elif int(result_flag) >=34:
@@ -71,6 +77,12 @@ def test_weather_shopper_form(base_url,browser,browser_version,os_version,os_nam
 
            # view added products on the cart
            test_obj.click_cart()
+
+           # verify you are cart screen
+           is_screen_visible=test_obj.check_redirect_cart()
+           if is_screen_visible is not None:
+              test_obj.write("You are on cart page")
+
 
         
        

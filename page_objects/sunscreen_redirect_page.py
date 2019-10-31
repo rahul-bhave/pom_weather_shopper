@@ -17,13 +17,4 @@ class Sunscreen_Redirect_Page(Base_Page,Payment_Object,Product_Object):
         url = 'sunscreen'
         self.open(url)
 
-    @Wrapit._exceptionHandler    
-    def check_heading(self):
-        "Check if the heading exists"
-        result_flag = self.check_element_present(self.heading)
-        self.conditional_write(result_flag,
-            positive='Correct heading present on redirect page',
-            negative='Heading on redirect page is INCORRECT!!',
-            level='debug')
-
-        return result_flag
+    
