@@ -47,6 +47,9 @@ def test_weather_shopper_form(base_url,browser,browser_version,os_version,os_nam
            # Adding the product categories in the cart
            test_obj.add_products(product_moisturizers_category)
 
+           # view the added products on the cart
+           test_obj.click_cart()
+
 
 
         elif int(result_flag) >=34:
@@ -62,8 +65,13 @@ def test_weather_shopper_form(base_url,browser,browser_version,os_version,os_nam
            # Select product categories
            product_sunscreens_category = conf.product_sunscreens_category
            test_obj.write("product categories are %s"%product_sunscreens_category)
+
            # Adding the product categories in the cart
            test_obj.add_products(product_sunscreens_category)
+
+           # view added products on the cart
+           test_obj.click_cart()
+
         
        
     

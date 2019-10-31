@@ -51,6 +51,12 @@ class Product_Object:
 
     def click_cart(self):
         "Click on the Cart button"
+        result_flag = self.click_element(self.cart_button)
+        self.conditional_write(result_flag,
+            positive='Clicked on the "cart" button',
+            negative='Failed to click on "cart" button',
+            level='debug')
+
 
         return result_flag     
 
