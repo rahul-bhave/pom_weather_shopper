@@ -6,6 +6,7 @@ The form consists of some input fields, a dropdown, a checkbox and a button
 from .Base_Page import Base_Page
 import conf.locators_conf as locators
 from utils.Wrapit import Wrapit
+import pytest
 
 
 class Weathershopper_Object:
@@ -85,22 +86,6 @@ class Weathershopper_Object:
         
         
         return result_flag
-
-    @Wrapit._screenshot
-    @Wrapit._exceptionHandler
-    def check_redirect_cart(self):
-        result_flag = False       
-        heading_cart = "xpath,//h2[contains(text(),'Checkout')]"
-        if self.check_element_present(heading_cart) is not None:
-            result_flag = True
-            self.conditional_write(result_flag,
-               positive='You are on cart page',
-               negative='Failed to go on cart page',
-               level='debug')
-            self.switch_page("cart")
-
-        return result_flag
-
 
 
     
