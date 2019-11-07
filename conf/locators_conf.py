@@ -35,6 +35,7 @@ card_expiry = "xpath,//input[@placeholder='MM / YY']"
 cvc = "xpath,//input[@placeholder='CVC']"
 zip_code = "xpath, //input[@placeholder='ZIP Code']"
 pay_button = "xpath, //button[@type ='submit']"
+heading_cart = "xpath,//h2[contains(text(),'Checkout')]"
 
 
 

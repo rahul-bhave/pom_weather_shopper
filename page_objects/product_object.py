@@ -14,7 +14,8 @@ class Product_Object:
     product_price_element = locators.product_price_element
     product_add_element = locators.product_add_element
     cart_button = locators.click_cart  
-    checkout_heading = locators.checkout_heading    
+    checkout_heading = locators.checkout_heading
+    heading_cart = locators.heading_cart
     product_category = []    
     product_moisturizers_category = []
     product_sunscreens_category = []
@@ -67,8 +68,7 @@ class Product_Object:
     def check_redirect_cart(self):
         "Checking redirecting on cart"
         result_flag = False       
-        heading_cart = "xpath,//h2[contains(text(),'Checkout')]"
-        if self.check_element_present(heading_cart) is not None:
+        if self.check_element_present(self.heading_cart) is not None:
             result_flag = True
             self.conditional_write(result_flag,
                positive='You are on cart page',
