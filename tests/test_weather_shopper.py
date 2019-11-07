@@ -1,14 +1,12 @@
-
+"""
+This class runs all tests
+"""
 import os,sys,time,pytest
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from page_objects.PageFactory import PageFactory
 from utils.Option_Parser import Option_Parser
 import conf.product_payment_conf as conf
 from page_objects.product_object import Product_Object
-#import pytest
-#import conftest
-
-
 
 
 def test_weather_shopper_form(base_url,browser,browser_version,os_version,os_name,remote_flag,remote_project_name,remote_build_name):
@@ -56,8 +54,6 @@ def test_weather_shopper_form(base_url,browser,browser_version,os_version,os_nam
            is_screen_visible=test_obj.check_redirect_cart()
            if is_screen_visible is not None:
               test_obj.write("You are on cart page")
-
-
 
 
         elif int(result_flag) >=34:
@@ -122,5 +118,3 @@ if __name__=='__main__':
     else:
         print('ERROR: Received incorrect comand line input arguments')
         print(option_obj.print_usage())
-    
-   

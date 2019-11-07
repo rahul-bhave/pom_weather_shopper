@@ -1,12 +1,13 @@
-
+"""
+This Sunscreen_Redirect_Page
+"""
 from .Base_Page import Base_Page
-from .payment_object import Payment_Object
 from .product_object import Product_Object
 import conf.locators_conf as locators
 from utils.Wrapit import Wrapit
 
 
-class Sunscreen_Redirect_Page(Base_Page,Payment_Object,Product_Object):
+class Sunscreen_Redirect_Page(Base_Page,Product_Object):
     "Page Object for the redirect page"
 
     #locators

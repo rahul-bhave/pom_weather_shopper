@@ -1,13 +1,10 @@
 """
-This class models the form on the Selenium tutorial page
-The form consists of some input fields, a dropdown, a checkbox and a button
+This class handles all temprature related scenarios
 """
-
 from .Base_Page import Base_Page
 import conf.locators_conf as locators
 from utils.Wrapit import Wrapit
 import pytest
-
 
 class Weathershopper_Object:
     "Page object for the Form"

@@ -3,11 +3,10 @@ PageFactory uses the factory design pattern.
 get_page_object() returns the appropriate page object.
 Add elif clauses as and when you implement new pages.
 Pages implemented so far:
-1. Tutorial main page
-2. Tutorial redirect page
-3. Contact Page
-4. Bitcoin main page
-5. Bitcoin price page
+1. Moisturizer_Redirect_Page
+2. Sunscreen_Redirect_Page
+3. Weathershopper main page
+4. cart redirect page
 """
 
 from page_objects.weathershopper_main_page import Weathershopper_Main_Page

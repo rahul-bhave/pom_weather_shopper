@@ -4,13 +4,12 @@ URL: cart
 The page consists of Item and price details
 """
 from .Base_Page import Base_Page
-from .payment_object import Payment_Object
 from .product_object import Product_Object
 import conf.locators_conf as locators
 from utils.Wrapit import Wrapit
 
 
-class Cart_Redirect_Page(Base_Page,Payment_Object,Product_Object):
+class Cart_Redirect_Page(Base_Page,Product_Object):
     
 
     #locators
@@ -20,5 +19,3 @@ class Cart_Redirect_Page(Base_Page,Payment_Object,Product_Object):
         "Use this method to go to specific URL -- if needed"
         url = 'cart'
         self.open(url)
-
-    

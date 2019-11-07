@@ -1,8 +1,7 @@
 """
-This class models the main Selenium tutorial page.
-URL: selenium-tutorial-main
-The page consists of a header, footer, form and table objects
+This class models the form on the weather shopper application main page
 """
+
 from page_objects.Base_Page import Base_Page
 from page_objects.weathershopper_object import Weathershopper_Object
 from utils.Wrapit import Wrapit

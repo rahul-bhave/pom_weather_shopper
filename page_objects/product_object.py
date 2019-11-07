@@ -1,9 +1,11 @@
+"""
+This is is product category selection page also includes clicking on the cart
+"""
 
 from .Base_Page import Base_Page
 import conf.locators_conf as locators
 from utils.Wrapit import Wrapit
 import re
-
 
 
 class Product_Object:
@@ -17,7 +19,6 @@ class Product_Object:
     product_moisturizers_category = []
     product_sunscreens_category = []
     
-
     def add_products(self,product_category):
         "Add products to the cart"
         result_flag = False
@@ -49,6 +50,7 @@ class Product_Object:
         
         return result_flag
 
+
     def click_cart(self):
         "Click on the Cart button"
         result_flag = self.click_element(self.cart_button)
@@ -57,12 +59,13 @@ class Product_Object:
             negative='Failed to click on "cart" button',
             level='debug')
 
-
         return result_flag     
+
 
     @Wrapit._screenshot
     @Wrapit._exceptionHandler
     def check_redirect_cart(self):
+        "Checking redirecting on cart"
         result_flag = False       
         heading_cart = "xpath,//h2[contains(text(),'Checkout')]"
         if self.check_element_present(heading_cart) is not None:
@@ -74,4 +77,3 @@ class Product_Object:
             self.switch_page("cart")
 
         return result_flag
-
