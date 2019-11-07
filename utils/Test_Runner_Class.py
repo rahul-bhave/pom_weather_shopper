@@ -6,7 +6,7 @@ import os,subprocess
 
 class Test_Runner_Class:
     "Test Runner class"
-    def __init__(self,base_url='http://qxf2.com',testrail_flag='N',browserstack_flag='N',os_name='Windows',os_version='7',browser='firefox',browser_version='33'):
+    """def __init__(self,base_url='http://qxf2.com',testrail_flag='N',browserstack_flag='N',os_name='Windows',os_version='7',browser='firefox',browser_version='33'):
         "Constructor"
         self.python_executable = "python"
         self.util_directory = os.path.abspath((os.path.dirname(__file__)))
@@ -18,7 +18,7 @@ class Test_Runner_Class:
                    os_name=os_name,
                    os_version=os_version,
                    browser=browser,
-                   browser_version=browser_version)
+                   browser_version=browser_version)"""
 
     def check_file_exists(self,file_path):
         "Check if the config file exists and is a file"
