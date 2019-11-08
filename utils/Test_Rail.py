@@ -13,9 +13,9 @@ import conf.testrailenv_conf as conf_file
 class Test_Rail:
     "Wrapper around TestRail's API"
 
-    """def __init__(self):        
+    def __init__(self):        
         "Initialize the TestRail objects"
-        self.set_testrail_conf()"""
+        self.set_testrail_conf()
 
 
     def set_testrail_conf(self):
